@@ -1,13 +1,16 @@
 import "./App.css";
 import { useState } from "react";
 import { Home } from "./pages/home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Search } from "./pages/search";
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
 
   return (
-    <div className="app">
-      {/* {showSearchPage ? (
+    <BrowserRouter>
+      <div className="app">
+        {/* {showSearchPage ? (
         <div className="search-books">
           <div className="search-books-bar">
             <a
@@ -278,8 +281,12 @@ function App() {
           </div>
         </div>
       )} */}
-      <Home />
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

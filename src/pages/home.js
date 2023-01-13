@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Book } from "../components/book/book";
 import { Header } from "../components/header/header";
 import { Shelf } from "../components/shelf/shelf";
@@ -42,10 +43,18 @@ export const Home = () => {
       shelf: "read",
     },
   ];
+
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    navigate("/search");
+  };
   return (
     <div>
       <Header />
       <Shelves books={books} />
+      <div className="open-search" onClick={navigateHandler}>
+        <a>Add a book</a>
+      </div>
     </div>
   );
 };

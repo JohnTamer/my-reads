@@ -1,4 +1,4 @@
-export const Book = ({ book }) => {
+export const Book = ({ book, updateShelf }) => {
   return (
     <div>
       <li>
@@ -9,11 +9,14 @@ export const Book = ({ book }) => {
               style={{
                 width: 128,
                 height: 192,
-                backgroundImage: `url(${book.img})`,
+                backgroundImage: `url(${book.imageLinks.thumbnail})`,
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select>
+              <select
+                onChange={(e) => updateShelf(book, e.target.value)}
+                defaultValue={book.shelf}
+              >
                 <option value="none" disabled>
                   Move to...
                 </option>
@@ -25,7 +28,7 @@ export const Book = ({ book }) => {
             </div>
           </div>
           <div className="book-title">{book.title}</div>
-          <div className="book-authors">{book.author}</div>
+          <div className="book-authors">{book.authors}</div>
         </div>
       </li>
     </div>

@@ -1,5 +1,5 @@
 import { Book } from "../book/book";
-
+import PropTypes from "prop-types";
 export const Shelf = ({ shelfName, booksData, updateShelf }) => {
   return (
     <div className="bookshelf">
@@ -16,4 +16,8 @@ export const Shelf = ({ shelfName, booksData, updateShelf }) => {
       </div>
     </div>
   );
+};
+Shelf.propTypes = {
+  books: PropTypes.array,
+  updateShelf: PropTypes.func,
 };

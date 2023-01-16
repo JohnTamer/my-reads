@@ -1,5 +1,5 @@
 import { Shelf } from "../shelf/shelf";
-
+import PropTypes from "prop-types";
 export const Shelves = ({ books, updateShelf }) => {
   const currentyReading = books?.filter(
     (book) => book.shelf === "currentlyReading"
@@ -21,4 +21,8 @@ export const Shelves = ({ books, updateShelf }) => {
       <Shelf shelfName="Read" booksData={read} updateShelf={updateShelf} />
     </div>
   );
+};
+Shelves.propTypes = {
+  books: PropTypes.array,
+  updateShelf: PropTypes.func,
 };

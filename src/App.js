@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Home } from "./pages/home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Search } from "./pages/search";
 import * as BooksAPI from "./BooksAPI";
 import { Error } from "./pages/error";
@@ -10,7 +10,9 @@ function App() {
   const [books, setBooks] = useState();
   useEffect(() => {
     const timer = setTimeout(() =>
-      BooksAPI.getAll().then((data) => setBooks(data), 1000)
+      BooksAPI.getAll().then((data) => {
+        setBooks(data);
+      }, 1000)
     );
     return () => {
       clearTimeout(timer);
@@ -303,6 +305,7 @@ function App() {
             element={<Search books={books} updateShelf={updateShelf} />}
           />
           <Route path="*" element={<Error />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,4 +1,5 @@
-export const SearchBook = ({ books, searchBook, updateShelf }) => {
+import PropTypes from "prop-types";
+export const SearchBook = ({ searchBook, updateShelf }) => {
   return (
     <div>
       <div className="book">
@@ -32,4 +33,8 @@ export const SearchBook = ({ books, searchBook, updateShelf }) => {
       </div>
     </div>
   );
+};
+SearchBook.propTypes = {
+  searchBook: PropTypes.object,
+  updateShelf: PropTypes.func,
 };

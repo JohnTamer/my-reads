@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as BooksApi from "../BooksAPI";
+import PropTypes from "prop-types";
 import { Book } from "../components/book/book";
 import { SearchBook } from "../components/searchBook/searchBook";
 export const Search = ({ books, updateShelf }) => {
@@ -107,4 +108,8 @@ export const Search = ({ books, updateShelf }) => {
       </div>
     </div>
   );
+};
+Search.propTypes = {
+  books: PropTypes.array,
+  updateShelf: PropTypes.func,
 };

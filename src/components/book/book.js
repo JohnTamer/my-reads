@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 export const Book = ({ book, updateShelf }) => {
   return (
     <div>
@@ -31,4 +33,8 @@ export const Book = ({ book, updateShelf }) => {
       </div>
     </div>
   );
+};
+Book.propTypes = {
+  books: PropTypes.array,
+  updateShelf: PropTypes.func,
 };

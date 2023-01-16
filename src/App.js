@@ -1,12 +1,18 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Home } from "./pages/home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Search } from "./pages/search";
+import * as BooksAPI from "./BooksAPI";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
-
+  const [books, setBooks] = useState();
+  useEffect(() => {
+    BooksAPI.getAll().then((data) => setBooks(data));
+  }, []);
+  const updateShelf = (book, newShelf) => {
+    BooksAPI.update(book, newShelf).then((data) => console.log(data));
+  };
   return (
     <BrowserRouter>
       <div className="app">
@@ -282,8 +288,14 @@ function App() {
         </div>
       )} */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
+          <Route
+            path="/"
+            element={<Home books={books} updateShelf={updateShelf} />}
+          />
+          <Route
+            path="/search"
+            element={<Search books={books} updateShelf={updateShelf} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

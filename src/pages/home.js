@@ -6,7 +6,6 @@ import * as BooksApi from "../BooksAPI";
 
 export const Home = () => {
   const [books, setBooks] = useState();
-
   const navigate = useNavigate();
   const navigateHandler = () => {
     navigate("/search");
@@ -15,7 +14,7 @@ export const Home = () => {
   useEffect(() => {
     BooksApi.getAll().then((data) => setBooks(data));
   });
-  //the book object imageLinks.thumbnail / authors  /  title / shelf ( currentlyReading / wantToRead / read)
+  // the book object imageLinks.thumbnail / authors  /  title / shelf ( currentlyReading / wantToRead / read)
 
   const updateShelf = (book, newShelf) => {
     BooksApi.update(book, newShelf).then((data) => console.log(data));

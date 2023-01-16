@@ -1,4 +1,5 @@
-export const Book = ({ book, updateShelf }) => {
+export const SearchBook = ({ books, searchBook, updateShelf }) => {
+  console.log("from search", searchBook);
   return (
     <div>
       <li>
@@ -9,13 +10,14 @@ export const Book = ({ book, updateShelf }) => {
               style={{
                 width: 128,
                 height: 192,
-                backgroundImage: `url(${book?.imageLinks?.thumbnail})`,
+                backgroundImage: `url(${searchBook?.imageLinks?.thumbnail})`,
               }}
             ></div>
             <div className="book-shelf-changer">
               <select
-                onChange={(e) => updateShelf(book, e.target.value)}
-                defaultValue={book?.shelf}
+                onChange={(e) => updateShelf(searchBook, e.target.value)}
+                defaultValue={searchBook?.shelf}
+                // defaultValue={book.shelf ? book.shelf : "none"}
               >
                 <option value="None" disabled>
                   Move to...
@@ -27,8 +29,8 @@ export const Book = ({ book, updateShelf }) => {
               </select>
             </div>
           </div>
-          <div className="book-title">{book?.title}</div>
-          <div className="book-authors">{book?.authors}</div>
+          <div className="book-title">{searchBook?.title}</div>
+          <div className="book-authors">{searchBook?.authors}</div>
         </div>
       </li>
     </div>

@@ -4,6 +4,7 @@ import { Home } from "./pages/home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Search } from "./pages/search";
 import * as BooksAPI from "./BooksAPI";
+import { Error } from "./pages/error";
 
 function App() {
   const [books, setBooks] = useState();
@@ -294,13 +295,14 @@ function App() {
       )} */}
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={<Home books={books} updateShelf={updateShelf} />}
           />
           <Route
             path="/search"
             element={<Search books={books} updateShelf={updateShelf} />}
           />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </BrowserRouter>

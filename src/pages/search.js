@@ -6,7 +6,7 @@ import { SearchBook } from "../components/searchBook/searchBook";
 export const Search = ({ books, updateShelf }) => {
   const navigate = useNavigate();
   const navigateHandler = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const [search, setSearch] = useState("");
@@ -16,11 +16,12 @@ export const Search = ({ books, updateShelf }) => {
       if (search) {
         BooksApi.search(search, 30).then((data) => {
           if (data.error) {
-            console.log(data);
           } else {
             setSearchBooks(data);
           }
         });
+      } else {
+        setSearchBooks([]);
       }
     }, 2000);
     return () => {

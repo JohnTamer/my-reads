@@ -1,5 +1,4 @@
 export const SearchBook = ({ books, searchBook, updateShelf }) => {
-  console.log("from search", searchBook);
   return (
     <div>
       <li>

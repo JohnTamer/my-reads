@@ -28,22 +28,19 @@ export const Search = ({ books, updateShelf }) => {
     };
   }, [search]);
 
-  const newww = () => {
+  const searchBooksHandler = () => {
     searchBooks.forEach((searchBook) => {
-      let shelf = "none";
+      searchBook.shelf = "none";
       books.forEach((oldBook) => {
         if (oldBook.id === searchBook.id) {
-          // console.log(oldBook.id, searchBook.id);
           searchBook.shelf = oldBook.shelf;
-        }
-        if (oldBook.id !== searchBook.id) {
-          searchBook.shelf = shelf;
         }
       });
     });
     // console.log(searchBooks);
   };
-  newww();
+
+  searchBooksHandler();
 
   return (
     <div className="search-books">

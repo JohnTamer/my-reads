@@ -8,10 +8,15 @@ import * as BooksAPI from "./BooksAPI";
 function App() {
   const [books, setBooks] = useState();
   useEffect(() => {
-    BooksAPI.getAll().then((data) => setBooks(data));
-  }, []);
+    const timer = setTimeout(() =>
+      BooksAPI.getAll().then((data) => setBooks(data), 1000)
+    );
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [books]);
   const updateShelf = (book, newShelf) => {
-    BooksAPI.update(book, newShelf).then((data) => console.log(data));
+    BooksAPI.update(book, newShelf).then((data) => data);
   };
   return (
     <BrowserRouter>

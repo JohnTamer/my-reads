@@ -17,7 +17,7 @@ export const Home = () => {
   // the book object imageLinks.thumbnail / authors  /  title / shelf ( currentlyReading / wantToRead / read)
 
   const updateShelf = (book, newShelf) => {
-    BooksApi.update(book, newShelf).then((data) => console.log(data));
+    BooksApi.update(book, newShelf).then((data) => data);
   };
 
   return (

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as BooksApi from "../BooksAPI";
 import PropTypes from "prop-types";
-import { Book } from "../components/book/book";
 import { SearchBook } from "../components/searchBook/searchBook";
 export const Search = ({ books, updateShelf }) => {
   const navigate = useNavigate();
@@ -61,43 +60,6 @@ export const Search = ({ books, updateShelf }) => {
       </div>
       <div className="search-books-results">
         <ol className="books-grid">
-          {/* {searchBooks &&
-            searchBooks?.map((aBook) => (
-              <li key={aBook.id}>
-                <li>
-                  <div className="book">
-                    <div className="book-top">
-                      <div
-                        className="book-cover"
-                        style={{
-                          width: 128,
-                          height: 192,
-                          backgroundImage: `url(${aBook?.imageLinks?.thumbnail})`,
-                        }}
-                      ></div>
-                      <div className="book-shelf-changer">
-                        <select
-                          onChange={(e) => updateShelf(aBook, e.target.value)}
-                          defaultValue={aBook.shelf}
-                        >
-                          <option value="None" disabled>
-                            Move to...
-                          </option>
-                          <option value="currentlyReading">
-                            Currently Reading
-                          </option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="book-title">{aBook?.title}</div>
-                    <div className="book-authors">{aBook?.author}</div>
-                  </div>
-                </li>
-              </li>
-            ))} */}
           {searchBooks?.map((aBook) => (
             <li key={aBook.id}>
               {" "}
